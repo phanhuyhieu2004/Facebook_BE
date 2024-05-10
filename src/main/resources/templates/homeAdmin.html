@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Admin trang chủ</title>
 </head>
 <body>
-hjjkgg
+<h1>User List</h1>
+<table>
+  <thead>
+  <tr>
+    <th>STT</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Full Name</th>
+    <th>Birthday</th>
+    <th>Address</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user, iterStat : ${users}">
+    <td th:text="${iterStat.index + 1}"></td>
+    <td th:text="${user.username}"></td>
+    <td th:text="${user.password}"></td>
+    <td th:text="${user.email}"></td>
+    <td th:text="${user.phone}"></td>
+    <td th:text="${user.fullName}"></td>
+    <td th:text="${user.birthday}"></td>
+    <td th:text="${user.address}"></td>
+    <td>
+      <a th:href="@{'/facebook/edit/' + ${user.account_id}}">Sửa</a>
+      <a th:href="@{'facebook/delete/' + ${user.account_id}}" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
 </body>
 </html>

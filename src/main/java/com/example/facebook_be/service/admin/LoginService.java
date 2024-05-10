@@ -21,5 +21,11 @@ public class LoginService implements ILoginService {
             return loginRepository.findByPhoneAndPassword(identifier, password);
         }
     }
+
+    @Override
+    public Iterable<Account> findAllByRoleNot(int role) {
+        return loginRepository.findAllByRoleNot(role);
+    }
+
 }
 
