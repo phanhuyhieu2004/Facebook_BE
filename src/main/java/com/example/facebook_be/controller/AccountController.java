@@ -12,4 +12,12 @@ public class AccountController {
     public ModelAndView showFormLogin(){
         return new ModelAndView("/login","account",new Account());
     }
+    @GetMapping("/list")
+    public ModelAndView showForm(){
+        return new ModelAndView("/list","account",new Account());
+    }
+    @GetMapping("/edit")
+    public ModelAndView show(){
+        return new ModelAndView("/edit","account",new Account());
+    }
 }
