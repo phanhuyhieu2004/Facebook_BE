@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Bootstrap Dashboard and Admin Template - ByteWebster</title>
+    <link rel="stylesheet" href="/css/edit.css">
+    <link type="images/png" rel="icon"
+          href="https://static-00.iconduck.com/assets.00/facebook-color-icon-2048x2048-bfly1vxr.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"
+          integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+</head>
+<!-- bytewebster.com -->
+<!-- bytewebster.com -->
+<!-- bytewebster.com -->
+<body>
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+    <!-- Vertical Navbar -->
+    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+         id="navbarVertical" style="border:none;background: var(--color-background) !important;">
+        <div class="container-fluid">
+            <!-- Toggler -->
+            <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Brand -->
+            <div class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0 d-flex justify-content-center">
+                <h3 class="text-success" style="margin-right: 30px;">
+                    <img src="https://static-00.iconduck.com/assets.00/facebook-color-icon-2048x2048-bfly1vxr.png"
+                         width="40">
+                    <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg">
+                </h3>
+            </div>
+
+
+            <!-- User menu (mobile) -->
+
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidebarCollapse">
+                <!-- Navigation -->
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+
+                        <a class="nav-link" href="#" >
+                            <i class="fa-solid fa-users"></i> Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-square-poll-vertical"></i> Statistical
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-message"style="color: red"></i> Messages
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-bookmarks"></i> Collections
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-people"></i> Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-globe-americas"></i> Ranking
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-file-text"></i> Posts
+                        </a>
+                    </li>
+                </ul>
+                <!-- Divider -->
+                <hr class="navbar-divider my-5 opacity-20">
+                <!-- Navigation -->
+
+                <!-- Push content down -->
+                <div class="mt-auto"></div>
+                <!-- User (md) -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-user"></i> Account
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="return confirm('Are you sure you want to logout?')">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+        <!-- Header -->
+        <header class="bg-surface-primary border-bottom pt-6" style="border:none;background: var(--color-background) !important;">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <!-- Title -->
+
+                        </div>
+                        <!-- Actions -->
+                        <div class="col-sm-6 col-12 d-flex justify-content-end align-items-center">
+                            <div class="form-check form-switch mx-4">
+                                <input class="form-check-input p-2" type="checkbox" role="switch"
+                                       id="flexSwitchCheckChecked" checked onclick="myFunction()"/>
+                            </div>
+                            <!-- Button trigger modal -->
+
+                            <!-- Modal -->
+
+
+
+
+                            <div class="navbar-user d-lg">
+                                <!-- Dropdown -->
+                                <div class="dropdown">
+                                    <!-- Toggle -->
+                                    <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <!-- Sử dụng d-flex để căn chỉnh ngang -->
+                                            <p class="m-0 me-2">Admin</p>
+                                            <!-- Đặt margin-right (me-2) cho phần tử "Admin" -->
+                                            <div class="avatar-parent-child">
+                                                <img alt="Image Placeholder"
+                                                     src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                                                     class="avatar avatar- rounded-circle">
+                                                <span class="avatar-child avatar-badge bg-success"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Menu -->
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar"style="background: var(--color-background);color: var(--color-dark)">
+                                        <a href="#" class="dropdown-item"> <i class="fa-solid fa-user"
+                                                                              style="margin-right: 10px;"></i>Profile</a>
+                                        <a href="#" class="dropdown-item"><i class="fa-solid fa-gear"
+                                                                             style="margin-right: 10px;"></i>Settings</a>
+
+                                        <hr class="dropdown-divider">
+                                        <a href="#" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"
+                                                                             style="margin-right: 10px;"></i>Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nav -->
+                </div>
+            </div>
+        </header>
+        <!-- Main -->
+        <main class="py-6 bg-surface-secondary" style="background: var(--color-background) !important">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <h2>Edit Account</h2>
+                        <form id="editForm">
+                            <div class="mb-3">
+                                <label for="edit-username" class="form-label">Username <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="edit-username" name="edit-username" required style="background: var(--color-background);color: var(--color-dark)">
+                                <div class="invalid-feedback">
+                                    Please provide a valid username.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-password" class="form-label">Password <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="edit-password" name="edit-password" pattern=".{6,}" title="Password must be at least 6 characters" required style="background: var(--color-background);color: var(--color-dark)">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-email" class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="edit-email" name="edit-email" required style="background: var(--color-background);color: var(--color-dark)">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="edit-phone" name="edit-phone" pattern="[0-9]{10}" title="Phone number must be 10 digits" style="background: var(--color-background);color: var(--color-dark)">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-birthday" class="form-label">Birthday</label>
+                                <input type="date" class="form-control" id="edit-birthday" name="edit-birthday" style="background: var(--color-background);color: var(--color-dark)">
+                            </div>
+                            <a href="index.html" class="btn btn-primary">Back</a>
+                            <button type="submit" class="btn btn-primary"style="color: var(--color-dark)">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class=" text-light py-5"style="background: var(--color-background)">
+            <div class="container text-center">
+                <div class="row mb-4">
+                    <div class="col-lg-12">
+                        <p>&copy; 2024 Your Company</p>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>

@@ -44,6 +44,4 @@ public class loginController {
         modelAndView.addObject("users", users);
         return modelAndView;
     }
-
-
 }
