@@ -2,9 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Home</title>
+   <style>
+       /* Thiết lập kiểu cho header */
+       header {
+           background-color: #3b5998;
+           color: #fff;
+           padding: 10px;
+       }
 
+       /* Thiết lập kiểu cho thanh điều hướng */
+       nav ul {
+           list-style-type: none;
+       }
+
+       nav ul li {
+           display: inline;
+           margin-right: 20px;
+       }
+
+       /* Thiết lập kiểu cho phần chính của trang */
+       .main-content {
+           display: flex;
+       }
+
+       /* Thiết lập kiểu cho news feed và sidebar */
+       .news-feed {
+           flex: 2;
+           padding: 20px;
+       }
+
+       .sidebar {
+           flex: 1;
+           padding: 20px;
+           background-color: #f0f2f5;
+       }
+
+       /* Thiết lập kiểu cho footer */
+       footer {
+           background-color: #3b5998;
+           color: #fff;
+           padding: 10px;
+           text-align: center;
+       }
+
+   </style>
+<body>
+<header>
+    <h1>Facebook</h1>
+    <nav>
+        <ul>
+            <li>News Feed</li>
+            <li>Friends</li>
+            <li>Groups</li>
+            <!-- Thêm các liên kết khác tùy thuộc vào cần thiết -->
+        </ul>
+    </nav>
+</header>
+<section class="main-content">
+    <!-- Phần News Feed -->
+    <div class="news-feed">
+        <!-- Các bài đăng từ bạn bè và nhóm -->
+    </div>
+    <!-- Cột bên -->
+    <aside class="sidebar">
+        <!-- Thông tin cá nhân, danh sách bạn bè online, các quảng cáo,... -->
+    </aside>
+</section>
+<footer>
+    <!-- Các liên kết và thông tin khác -->
+</footer>
 </body>
 </html>

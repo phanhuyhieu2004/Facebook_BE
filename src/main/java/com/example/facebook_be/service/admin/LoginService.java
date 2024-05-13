@@ -27,5 +27,29 @@ public class LoginService implements ILoginService {
         return loginRepository.findAllByRoleNot(role);
     }
 
+
+    @Override
+    public Iterable<Account> findAll() {
+        return loginRepository.findAll();
+    }
+
+    @Override
+    public Account save(Account account) {
+        return loginRepository.save(account);
+    }
+
+    public boolean isUsernameExists(String username) {
+        return loginRepository.existsByUsername(username);
+    }
+
+    public Account registerAccount(Account account) throws IllegalArgumentException {
+        if (isUsernameExists(account.getUsername())) {
+            throw new IllegalArgumentException("Tên người dùng đã tồn tại. Vui lòng chọn tên khác.");
+        }
+        account.setRole(2);
+        account.setStatus("Active");
+        return loginRepository.save(account);
+    }
+
 }
 
