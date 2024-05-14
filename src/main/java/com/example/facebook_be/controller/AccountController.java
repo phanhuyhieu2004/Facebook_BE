@@ -91,5 +91,12 @@ public class AccountController {
         }
         return "redirect:/facebook";
     }
+    @GetMapping("/block/{accountId}")
+    public String blockAccount(@PathVariable Long accountId, RedirectAttributes redirectAttributes) {
 
+            accountService.blockAccount(accountId);
+            redirectAttributes.addFlashAttribute("messages", "Account blocked successfully");
+
+        return "redirect:/facebook/homeAdmin";
+    }
 }

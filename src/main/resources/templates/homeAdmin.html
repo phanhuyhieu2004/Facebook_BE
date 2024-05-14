@@ -228,9 +228,8 @@
         </header>
         <!-- Main -->
         <main class="py-6 bg-surface-secondary" style="background: var(--color-background) !important">
-            <div th:if="${message}" class="alert alert-info">
-                <p th:text="${message}"></p>
-            </div>
+            <div th:if="${messages}" class="alert alert-info">
+                <p th:text="${messages}"></p>            </div>
             <div class="container-fluid">
                 <div class="container d-flex justify-content-center align-items-center" style="margin: 30px;">
 
@@ -287,10 +286,13 @@
                                         <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal"
                                            data-bs-target="#editModal"></i>
                                     </a>
-                                    <button type="button" onclick="showSweetAlert()"
-                                            class="btn btn-sm btn-square  text-danger-hover">
-                                        <i class="fa-solid fa-ban"></i></button>
+                                    <a th:href="@{/facebook/block/__${user.account_id}__ }" onclick="return confirm('Are you sure you want to block?');"
+                                        class="btn btn-sm "
+                                        style="padding: .5rem 0.7rem" >
+                                        <i class="fa-solid fa-ban"></i>
+                                    </a>
                                 </td>
+
                             </tr>
                             </tbody>
                         </table>
