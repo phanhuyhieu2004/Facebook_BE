@@ -14,6 +14,7 @@ public interface IAccountRepository extends JpaRepository<Account,Long>, JpaSpec
     Account findByEmailAndPassword(String email, String password);
     Account findByPhoneAndPassword(String phone, String password);
 
-
+    Account findByUsername(String username);
+    Account findByEmail(String email);
 
 }

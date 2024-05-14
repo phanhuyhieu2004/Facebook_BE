@@ -52,6 +52,13 @@ public class AccountService implements IAccountService{
 
         return iAccountRepository.findAll(spec, PageRequest.of(paginateRequest.getPage(), paginateRequest.getSize()));
     }
+    public Account findByUsername(String username) {
+        return iAccountRepository.findByUsername(username);
+    }
+
+    public Account findByEmail(String email) {
+        return iAccountRepository.findByEmail(email);
+    }
 
 
 }
