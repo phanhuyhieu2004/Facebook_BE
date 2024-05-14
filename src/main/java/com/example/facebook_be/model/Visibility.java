@@ -12,6 +12,7 @@ public class Visibility {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long visibility_id;
     private String name;
-//Chế độ của bài đăng: tạo sẵn dữ liệu trong DB là :Public,Private
+//Chế độ của bài đăng: tạo sẵn dữ liệu trong DB là :Public,Private,....Các chế độ như trên fb
+
 
 }
