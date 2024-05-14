@@ -46,7 +46,16 @@ public class AccountService implements IAccountService{
         }
     }
 
-
+    public void blockAccount(Long accountId) {
+        Optional<Account> accountOptional = iAccountRepository.findById(accountId);
+        if (accountOptional.isPresent()) {
+            Account account = accountOptional.get();
+            account.setStatus("block");
+            iAccountRepository.save(account);
+        } else {
+            throw new RuntimeException("Account not found");
+        }
+    }
     public Page<Account> findAll(AccountRequest accountRequest, PaginateRequest paginateRequest) {
         Specification<Account> spec = new AccountSpec(accountRequest);
 
