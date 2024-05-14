@@ -8,6 +8,7 @@ public class FacebookBeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FacebookBeApplication.class, args);
+		System.out.println("\"http://localhost:8080/facebook");
 	}
 
 }

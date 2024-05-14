@@ -13,7 +13,4 @@ import java.util.List;
 public interface IAccountRepository extends JpaRepository<Account,Long>, JpaSpecificationExecutor<Account> {
     Account findByEmailAndPassword(String email, String password);
     Account findByPhoneAndPassword(String phone, String password);
-
-
-
 }
