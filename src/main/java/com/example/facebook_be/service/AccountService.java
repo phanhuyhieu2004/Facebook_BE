@@ -4,6 +4,7 @@ import com.example.facebook_be.dto.AccountRequest;
 import com.example.facebook_be.dto.AccountSpec;
 import com.example.facebook_be.dto.PaginateRequest;
 import com.example.facebook_be.model.Account;
+import com.example.facebook_be.model.Post;
 import com.example.facebook_be.repository.IAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

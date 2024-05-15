@@ -15,7 +15,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long post_id;
-    private String context;
+    private String content;
     private String image;
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
