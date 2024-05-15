@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/facebook")
-@SessionAttributes("user")
+@SessionAttributes("account")
 public class AccountController {
     @Autowired
     private AccountService accountService;
@@ -34,16 +34,16 @@ public class AccountController {
                                  @RequestParam(name = "birthday", required = false) String birthday,HttpSession session
     ) {
         Page<Account> accountPage = accountService.findAll(  new AccountRequest(username,birthday),new PaginateRequest(page, size));
-        Account user = (Account) session.getAttribute("user");
-        if (user != null && user.getRole() == 0) {
+        Account account = (Account) session.getAttribute("account");
+        if (account != null && account.getRole() == 0) {
         ModelAndView modelAndView = new ModelAndView("homeAdmin");
         modelAndView.addObject("pageBegin", Math.max(1, page));
         modelAndView.addObject("pageEnd", Math.min(page + 2, accountPage.getTotalPages()));
 
         modelAndView.addObject("currentPage", page);
         modelAndView.addObject("size", size);
-            modelAndView.addObject("user", user);
-        modelAndView.addObject("users", accountPage.getContent());
+            modelAndView.addObject("account", account);
+        modelAndView.addObject("accounts", accountPage.getContent());
 
 
         modelAndView.addObject("totalPages", accountPage.getTotalPages());
@@ -55,22 +55,22 @@ public class AccountController {
         }}
     @PostMapping("/login")
     public String login(HttpSession session, RedirectAttributes redirect, @RequestParam String identifier, @RequestParam String password) {
-        Account user = accountService.login(identifier, password);
-        if (user != null) {
-            session.setAttribute("user", user);
+        Account account = accountService.login(identifier, password);
+        if (account != null) {
+            session.setAttribute("account", account);
 
 
-            if (user.getRole() == 0) {
+            if (account.getRole() == 0) {
 
                 return "redirect:/facebook/homeAdmin";
             } else {
                 redirect.addFlashAttribute(
-                        "message", "Đăng nhập không thành công.");
+                        "message", "Login unsuccessful.");
                 return "redirect:/facebook";
             }
         } else {
             redirect.addFlashAttribute(
-                    "message", "SĐT hoặc email hoặc mật khẩu không đúng !");
+                    "message", "Incorrect phone number or email or password!");
             return "redirect:/facebook";
         }
     }
@@ -95,7 +95,7 @@ public class AccountController {
     public String blockAccount(@PathVariable Long accountId, RedirectAttributes redirectAttributes) {
 
             accountService.blockAccount(accountId);
-            redirectAttributes.addFlashAttribute("messages", "Account blocked successfully");
+            redirectAttributes.addFlashAttribute("message", "Account blocked successfully");
 
         return "redirect:/facebook/homeAdmin";
     }
