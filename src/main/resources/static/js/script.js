@@ -29,22 +29,30 @@ function myFunction() {
         root.classList.remove('dark-theme-variables');
     }
 }
-function errorAlert(yes){
+// function errorAlert(yes){
+//
+//     const Toast = Swal.mixin({
+//         toast: true,
+//         position: "top-end",
+//         showConfirmButton: false,
+//         timer: 3000,
+//         timerProgressBar: true,
+//         didOpen: (toast) => {
+//             toast.onmouseenter = Swal.stopTimer;
+//             toast.onmouseleave = Swal.resumeTimer;
+//         }
+//     });
+//     Toast.fire({
+//         icon: "error",
+//         title: "Đăng nhập không thành công"
+//     });
+// }
 
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-        }
-    });
-    Toast.fire({
-        icon: "error",
-        title: "Đăng nhập không thành công"
-    });
-}
-
+// function confirmBlock(event) {
+//     event.preventDefault();
+//
+//     showSweetAlert().then((confirmed) => {
+//         if (confirmed) {
+//             window.location.href = event.target.closest('a').href;
+//         }
+//     });
