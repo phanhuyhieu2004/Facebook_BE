@@ -1,6 +1,8 @@
 package com.example.facebook_be.controller.api;
 
+import com.example.facebook_be.dto.PostForm;
 import com.example.facebook_be.model.Post;
+import com.example.facebook_be.repository.IPostRepository;
 import com.example.facebook_be.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +10,7 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,17 +20,13 @@ import java.util.Optional;
 public class PostController {
     @Autowired
     private PostService postService;
-
+@Autowired
+private IPostRepository iPostRepository;
     @GetMapping("")
-    public ResponseEntity<Iterable<Post>> getAllPosts(@RequestParam(value = "content", required = false) String content) {
+    public ResponseEntity<Iterable<Post>> getAllPosts() {
 
-        List<Post> posts;
-        if (content != null && !content.isEmpty()) {
-            posts = (List<Post>) postService.findByContent(content);
+        List<Post> posts= (List<Post>) iPostRepository.findByCreatedAtOrderBy();
 
-        } else {
-            posts = (List<Post>) postService.findAll();
-        }
         if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -43,8 +42,8 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> savePost(@RequestBody Post post) {
-        return new ResponseEntity<>(postService.save(post), HttpStatus.CREATED);
+    public ResponseEntity<Post> savePost(@ModelAttribute PostForm postForm) throws IOException {
+        return new ResponseEntity<>(postService.savePost(postForm), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

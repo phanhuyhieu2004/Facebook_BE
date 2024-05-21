@@ -3,46 +3,37 @@ package com.example.facebook_be.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="post")
+@Table(name="comment")
 @Data
-@EntityListeners(AuditingEntityListener.class)
-public class Post {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long post_id;
+    private Long comment_id;
     private String content;
     private String image;
-
-    private int likes ;
     @CreatedDate
-
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
 
-    @JoinColumn(name = "visibility_id")
-    private Visibility visibility;
-
-    public Post(Long post_id, String content, String image, int likes , LocalDateTime createdAt, Account account, Visibility visibility) {
-        this.post_id = post_id;
-        this.content = content;
-        this.image = image;
-
-        this.likes  = likes ;
-        this.createdAt = createdAt;
-        this.account = account;
-        this.visibility = visibility;
+    public Comment() {
     }
 
-    public Post() {
+    public Comment(Long comment_id, String content, String image, LocalDateTime createdAt, Account account, Post post) {
+        this.comment_id = comment_id;
+        this.content = content;
+        this.image = image;
+        this.createdAt = createdAt;
+        this.account = account;
+        this.post = post;
     }
 }
