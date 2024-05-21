@@ -28,4 +28,23 @@ public class Account {
     @Column(columnDefinition = "VARCHAR(255) DEFAULT 'active'")
     private String status;
 
+    public Account(Long account_id, String username, String password, String email, String phone, String birthday, String avatar, String fullName, String address, String interests, int friendCount, int commonFriendCount, int role, String status) {
+        this.account_id = account_id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.avatar = avatar;
+        this.fullName = fullName;
+        this.address = address;
+        this.interests = interests;
+        this.friendCount = friendCount;
+        this.commonFriendCount = commonFriendCount;
+        this.role = role;
+        this.status = status;
+    }
+
+    public Account() {
+    }
 }
