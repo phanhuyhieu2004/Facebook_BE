@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController("apiCommentController")
+@RestController("")
 @RequestMapping("api/comments")
 @CrossOrigin(origins = "*")
 public class CommentController {
@@ -63,4 +63,9 @@ public class CommentController {
         return new ResponseEntity<>(commentOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalComments() {
+        Long totalCount = commentService.getTotalComments();
+        return new ResponseEntity<>(totalCount, HttpStatus.OK);
+    }
 }

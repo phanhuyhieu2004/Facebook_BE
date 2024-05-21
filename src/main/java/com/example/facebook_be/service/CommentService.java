@@ -2,7 +2,6 @@ package com.example.facebook_be.service;
 
 import com.example.facebook_be.model.Comment;
 import com.example.facebook_be.repository.ICommentRepository;
-import com.example.facebook_be.repository.IPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +29,9 @@ public class CommentService implements ICommentService{
     public void remove(Long id) {
 iCommentRepository.deleteById(id);
     }
+
+    public Long getTotalComments() {
+        return iCommentRepository.count();
+    }
+
 }

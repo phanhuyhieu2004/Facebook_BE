@@ -4,4 +4,5 @@ import com.example.facebook_be.model.Comment;
 
 
 public interface ICommentService extends IGeneralService<Comment>{
+
 }
