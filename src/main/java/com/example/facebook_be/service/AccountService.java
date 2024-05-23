@@ -4,18 +4,16 @@ import com.example.facebook_be.dto.AccountRequest;
 import com.example.facebook_be.dto.AccountSpec;
 import com.example.facebook_be.dto.PaginateRequest;
 import com.example.facebook_be.model.Account;
-import com.example.facebook_be.model.Post;
 import com.example.facebook_be.repository.IAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 @Service
-public class AccountService implements IAccountService{
+public class AccountService implements IAccountService {
     @Autowired
     private IAccountRepository iAccountRepository;
     @Override

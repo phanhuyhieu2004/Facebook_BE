@@ -18,4 +18,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/");
 //        hiển thị các tài nguyên tĩnh    }
 
-    }}
+    }
+}

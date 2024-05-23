@@ -1,13 +1,9 @@
 package com.example.facebook_be.controller.api;
 
 import com.example.facebook_be.model.Account;
-import com.example.facebook_be.model.Post;
-import com.example.facebook_be.model.Visibility;
 import com.example.facebook_be.repository.IAccountRepository;
-import com.example.facebook_be.service.VisibilityService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,8 +63,8 @@ public class AccountController {
         if (existingEmailAccount.isPresent() || existingUsernameAccount.isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-registerRequest.setRole(1);
-registerRequest.setStatus("active");
+        registerRequest.setRole(1);
+        registerRequest.setStatus("active");
         // Nếu không có tài khoản nào sử dụng email hoặc số điện thoại này, tiến hành đăng ký
         Account registeredAccount = iAccountRepository.save(registerRequest);
         return new ResponseEntity<>(registeredAccount, HttpStatus.OK);

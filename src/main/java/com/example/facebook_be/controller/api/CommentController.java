@@ -1,14 +1,16 @@
 package com.example.facebook_be.controller.api;
 
+import com.example.facebook_be.model.Account;
 import com.example.facebook_be.model.Comment;
 import com.example.facebook_be.model.Post;
 import com.example.facebook_be.service.CommentService;
-import com.example.facebook_be.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,7 @@ import java.util.Optional;
 @RequestMapping("api/comments")
 @CrossOrigin(origins = "*")
 public class CommentController {
+
     @Autowired
     private CommentService commentService;
 
@@ -29,6 +32,7 @@ public class CommentController {
         }
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Comment> findById(@PathVariable Long id) {
         Optional<Comment> commentOptional = commentService.findById(id);
@@ -39,8 +43,25 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<Comment> saveComment(@RequestBody Comment comment) {
-        return new ResponseEntity<>(commentService.save(comment), HttpStatus.CREATED);
+    public ResponseEntity<Comment> saveComment(@RequestParam ("content") String content,
+                                                                                               @RequestParam("account_id") Long accountId,
+                                                                                               @RequestParam("post_id") Long postId,
+                                                                                               @RequestParam(value = "image", required = false) MultipartFile image) {
+        Comment comment = new Comment();
+        comment.setContent(content);
+        Account account = new Account();
+        account.setAccount_id(accountId);
+        comment.setAccount(account);
+        Post post = new Post();
+        post.setPost_id(postId);
+        comment.setPost(post);
+
+        try {
+            Comment createdComment = commentService.save(comment, image);
+            return new ResponseEntity<>(createdComment, HttpStatus.CREATED);
+        } catch (IOException e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")

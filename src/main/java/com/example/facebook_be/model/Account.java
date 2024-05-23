@@ -2,7 +2,8 @@ package com.example.facebook_be.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+
+import java.util.List;
 
 @Entity
 @Table(name="account")
@@ -23,28 +24,15 @@ public class Account {
     private int friendCount;
     private int commonFriendCount;
     @Column(columnDefinition = "INT DEFAULT 1")
-
     private int role;
     @Column(columnDefinition = "VARCHAR(255) DEFAULT 'active'")
     private String status;
 
-    public Account(Long account_id, String username, String password, String email, String phone, String birthday, String avatar, String fullName, String address, String interests, int friendCount, int commonFriendCount, int role, String status) {
-        this.account_id = account_id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-        this.birthday = birthday;
-        this.avatar = avatar;
-        this.fullName = fullName;
-        this.address = address;
-        this.interests = interests;
-        this.friendCount = friendCount;
-        this.commonFriendCount = commonFriendCount;
-        this.role = role;
-        this.status = status;
-    }
-
-    public Account() {
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "friendships",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "friend_id")
+    )
+    private List<Account> friends;
 }

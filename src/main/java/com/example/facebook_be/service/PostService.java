@@ -1,7 +1,6 @@
 package com.example.facebook_be.service;
 
 import com.example.facebook_be.dto.PostForm;
-import com.example.facebook_be.model.Account;
 import com.example.facebook_be.model.Post;
 import com.example.facebook_be.repository.IPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +13,19 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PostService implements IPostService{
+public class PostService implements IPostService {
     @Value("${file-upload}")
     private String fileUpload;
+
     @Autowired
     private IPostRepository iPostRepository;
+
     @Override
-    @Query(value = "SELECT * FROM post WHERE create_at ORDER BY DESC",nativeQuery = true)
+    @Query(value = "SELECT * FROM facebook.post WHERE create_at ORDER BY DESC",nativeQuery = true)
     public Iterable<Post> findAll() {
         return iPostRepository.findAll() ;
     }
@@ -42,6 +44,7 @@ public class PostService implements IPostService{
     public void remove(Long id) {
 iPostRepository.deleteById(id);
     }
+
     public Iterable<Post> findByContent(String content){
         return iPostRepository.findByContentContaining(content);
     }
@@ -67,5 +70,13 @@ iPostRepository.deleteById(id);
                 postForm.getVisibility()
         );
         return iPostRepository.save(post);
+    }
+
+    public List<Post> getRandomPosts(Long accountId, int limit, boolean fromFriends) {
+        if (fromFriends) {
+            return iPostRepository.findRandomPostsOfFriends(accountId, limit);
+        } else {
+            return iPostRepository.findRandomPostsOfSelf(accountId, limit);
+        }
     }
 }

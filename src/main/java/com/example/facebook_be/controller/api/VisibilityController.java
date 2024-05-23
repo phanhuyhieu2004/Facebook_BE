@@ -1,8 +1,6 @@
 package com.example.facebook_be.controller.api;
 
-import com.example.facebook_be.model.Post;
 import com.example.facebook_be.model.Visibility;
-import com.example.facebook_be.service.PostService;
 import com.example.facebook_be.service.VisibilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController("apiVisibilityController")
 @RequestMapping("api/visibilities")

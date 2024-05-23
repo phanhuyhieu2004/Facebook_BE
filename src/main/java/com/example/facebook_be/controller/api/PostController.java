@@ -6,7 +6,6 @@ import com.example.facebook_be.repository.IPostRepository;
 import com.example.facebook_be.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,5 +65,8 @@ private IPostRepository iPostRepository;
         return new ResponseEntity<>(postOptional.get(), HttpStatus.OK);
     }
 
-
+    @GetMapping("/random")
+    public List<Post> getRandomPosts(@RequestParam Long accountId, @RequestParam int limit, @RequestParam boolean fromFriends) {
+        return postService.getRandomPosts(accountId, limit, fromFriends);
+    }
 }
