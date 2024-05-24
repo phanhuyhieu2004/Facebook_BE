@@ -67,4 +67,8 @@ private IPostRepository iPostRepository;
     }
 
 
+    @GetMapping("/total-likes")
+    public int getTotalLikes() {
+        return postService.getTotalLikes();
+    }
 }

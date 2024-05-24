@@ -9,4 +9,6 @@ import java.io.IOException;
 public interface IPostService extends IGeneralService<Post>{
 
     Post savePost(PostForm postForm) throws IOException;
+
+    int getTotalLikes();
 }

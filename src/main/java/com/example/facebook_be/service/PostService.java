@@ -1,7 +1,6 @@
 package com.example.facebook_be.service;
 
 import com.example.facebook_be.dto.PostForm;
-import com.example.facebook_be.model.Account;
 import com.example.facebook_be.model.Post;
 import com.example.facebook_be.repository.IPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -67,5 +67,16 @@ iPostRepository.deleteById(id);
                 postForm.getVisibility()
         );
         return iPostRepository.save(post);
+    }
+
+
+@Override
+    public int getTotalLikes() {
+        List<Post> posts = iPostRepository.findAll();
+        int totalLikes = 0;
+        for (Post post : posts) {
+            totalLikes += post.getLikes();
+        }
+        return totalLikes;
     }
 }
