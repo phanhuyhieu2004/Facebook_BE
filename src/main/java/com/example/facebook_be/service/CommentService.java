@@ -6,6 +6,7 @@ import com.example.facebook_be.repository.IPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public class CommentService implements ICommentService{
@@ -30,4 +31,5 @@ public class CommentService implements ICommentService{
     public void remove(Long id) {
 iCommentRepository.deleteById(id);
     }
+
 }
