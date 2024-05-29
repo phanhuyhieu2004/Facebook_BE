@@ -47,4 +47,8 @@ public class Account {
 
     public Account() {
     }
+
+    public Account(Long account_id) {
+        this.account_id = account_id;
+    }
 }

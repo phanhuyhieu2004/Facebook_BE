@@ -49,15 +49,11 @@ iPostRepository.deleteById(id);
     @Override
     public Post savePost(PostForm postForm) throws IOException {
 
-        MultipartFile multipartFile = postForm.getImage();
-        String fileName = multipartFile.getOriginalFilename();
-        FileCopyUtils.copy(postForm.getImage().getBytes(), new File(fileUpload + fileName));
-
         LocalDateTime localDateTime = LocalDateTime.now();
         Post post = new Post(
                 null,
                 postForm.getContent(),
-                fileName,
+
 
                 postForm.getLikes(),
                 localDateTime,
