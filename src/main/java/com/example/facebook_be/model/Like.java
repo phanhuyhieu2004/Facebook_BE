@@ -12,7 +12,8 @@ public class Like {
     private Long like_id;
 
 
-    @OneTo@JoinColumn(name = "account_id")
+    @OneToOne
+    @JoinColumn(name = "account_id")
     private Account account;
     @ManyToOne
     @JoinColumn(name = "post_id")

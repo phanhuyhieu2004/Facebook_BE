@@ -29,7 +29,7 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
-    @OneToOne
+    @ManyToOne
 
     @JoinColumn(name = "visibility_id")
     private Visibility visibility;
