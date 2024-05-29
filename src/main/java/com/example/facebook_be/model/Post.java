@@ -19,7 +19,7 @@ public class Post {
 
     private Long post_id;
     private String content;
-    private String image;
+
 
     private int likes ;
     @CreatedDate
@@ -29,15 +29,15 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
-    @OneToOne
+    @ManyToOne
 
     @JoinColumn(name = "visibility_id")
     private Visibility visibility;
 
-    public Post(Long post_id, String content, String image, int likes , LocalDateTime createdAt, Account account, Visibility visibility) {
+    public Post(Long post_id, String content,  int likes , LocalDateTime createdAt, Account account, Visibility visibility) {
         this.post_id = post_id;
         this.content = content;
-        this.image = image;
+
 
         this.likes  = likes ;
         this.createdAt = createdAt;
@@ -46,5 +46,9 @@ public class Post {
     }
 
     public Post() {
+    }
+
+    public Post(Long post_id) {
+        this.post_id = post_id;
     }
 }

@@ -9,17 +9,17 @@ import org.springframework.web.multipart.MultipartFile;
 public class PostForm {
 
     private String content;
-    private MultipartFile image;
 
     private int likes ;
     private Visibility visibility;
     private Account account;
+
     public PostForm() {
     }
 
-    public PostForm(String content, MultipartFile image, int likes , Visibility visibility, Account account) {
+    public PostForm(String content, int likes , Visibility visibility, Account account) {
         this.content = content;
-        this.image = image;
+
 
         this.likes  = likes ;
         this.visibility = visibility;

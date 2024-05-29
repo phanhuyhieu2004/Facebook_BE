@@ -10,6 +10,7 @@ import java.util.Optional;
 public class CommentService implements ICommentService{
     @Autowired
     private ICommentRepository iCommentRepository;
+
     @Override
     public Iterable<Comment> findAll() {
         return iCommentRepository.findAll();
@@ -27,7 +28,7 @@ public class CommentService implements ICommentService{
 
     @Override
     public void remove(Long id) {
-iCommentRepository.deleteById(id);
+        iCommentRepository.deleteById(id);
     }
 
     public Long getTotalComments() {
