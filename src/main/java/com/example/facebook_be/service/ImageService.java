@@ -42,12 +42,15 @@ public class ImageService implements IImageService{
     }
 
     public List<Image> saveImage(ImageForm imageForm) throws IOException {
-        // Kiểm tra nếu imageForm hoặc mảng images bên trong nó bị null
-        if (imageForm == null || imageForm.getImages() == null) {
-            throw new IllegalArgumentException("ImageForm or its images cannot be null");
-        }
+
 
         List<Image> savedImages = new ArrayList<>();
+
+        // Kiểm tra nếu mảng images rỗng bằng cách kiểm tra độ dài của nó
+        if (imageForm.getImages().length == 0) {
+            System.out.println("No images to process");
+            return savedImages; // Trả về danh sách rỗng nếu không có ảnh
+        }
 
         for (MultipartFile file : imageForm.getImages()) {
             System.out.println("Processing file: " + file.getOriginalFilename());
@@ -65,6 +68,9 @@ public class ImageService implements IImageService{
 
         return savedImages;
     }
+
+
+
 
 
 
